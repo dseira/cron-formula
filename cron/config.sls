@@ -39,3 +39,15 @@ cron.{{ task }}:
         {% endif %}
 {% endfor %}
 {% endif %}
+
+{% if 'env' in cron_settings %}
+{% for env,env_options in cron_settings.env.iteritems() %}
+
+cron_env.{{ env }}:
+    cron.{{ env_options.type|default('env_present') }}:
+        - name: {{ env_options.name }}
+        - value: {{ env_options.value }}
+        - user: {{ env_options.user }}
+
+{% endfor %}
+{% endif %}

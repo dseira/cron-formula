@@ -31,3 +31,13 @@ cron:
             minute: '*/5'
             hour: '*'
             comment: 'comment4'
+
+    env:
+        env1:
+            type: 'env_present' # Default
+            name: 'PATH'
+            value: '"/usr/local/bin:/usr/bin:/bin"'
+            user: 'root'
+        env2:
+            type: 'env_absent'
+            name: 'MAILTO'
